@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+#header {
+    display: flex;
+    min-height:200px;
+    
+}
+.header-div {
+    flex:1;
+    font-size: 30px;
+}
+#view-highscores {
+    display:flex;
+    
+}
+#timer {
+    display: flex;
+    justify-content: flex-end;
+}
+#timer-text {
+    display:flex;
+    justify-content: center;
+    max-width:300px;
+}
+#container {
+    display: grid;
+    justify-content: center;
+}
+#questions {
+    padding: 20px 20px;
+}
+#answer-btns {
+    display:grid;
+    margin: 10px 10px;
+}
+.btn {
+    margin:5px 5px;
+}
