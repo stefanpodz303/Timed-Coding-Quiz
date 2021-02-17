@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    background-color: black;
+    color: yellow;
 }
 #header {
     display: flex;
@@ -10,7 +12,7 @@
     flex:1;
     font-size: 30px;
 }
-#view-highscores {
+#score {
     display:flex;
     
 }
@@ -32,6 +34,8 @@
     padding: 20px 20px;
     display:flex;
     justify-content: center;
+    font-size: 30px;
+    
 }
 #choices {
     display:grid;
@@ -46,7 +50,12 @@
     display:flex;
     justify-content: center;
     justify-content: space-evenly;
-    font-size: 15px;
+    
+    
+}
+.btn-hide {
+    font-size:20px;
     padding:10px;
+    border-radius: 15px;
     
 }

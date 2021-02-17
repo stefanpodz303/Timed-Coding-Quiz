@@ -8,7 +8,7 @@
 
 var quizQuestions = document.getElementById('questions');
 var resultsContainer = document.getElementById('results');
-var highscoresContainer = document.getElementById('highscores');
+var scoreContainer = document.getElementById('score');
 var startButton = document.getElementById('startButton');
 var resetButton = document.getElementById('reset-btn');
 var choices = document.getElementById('choices');
@@ -16,7 +16,8 @@ var timerEl = document.getElementById("timer");
 var timerText = document.getElementById("timer-text");
 var timeLeft = 50;
 var correctAnswer = ['d', 'b', 'a', 'c', 'd'];
-var questionIndex = 0
+var questionIndex = 0;
+var totalScore = 0;
 
 var myQuestions = [
     {
@@ -49,31 +50,43 @@ var myQuestions = [
 function startQuiz() {
     setTimer();
     getQuestions();
-    
-  }
 
-  function getQuestions() {
+}
+
+function getQuestions() {
     var currentQuestion = myQuestions[questionIndex];
     quizQuestions.textContent = currentQuestion.question;
     choices.innerHTML = '';
     for (var i = 0; i < currentQuestion.answers.length; i++) {
-    var currentAnswerEl = document.createElement('button');
-    currentAnswerEl.textContent = currentQuestion.answers[i];
-    currentAnswerEl.setAttribute('value', currentQuestion.answers[i]);
-    currentAnswerEl.onclick = answerClick;
-    choices.appendChild(currentAnswerEl);
+        var currentAnswerEl = document.createElement('button');
+        currentAnswerEl.textContent = currentQuestion.answers[i];
+        currentAnswerEl.setAttribute('value', currentQuestion.answers[i]);
+        currentAnswerEl.onclick = answerClick;
+        choices.appendChild(currentAnswerEl);
     }
-  }
+    // if (questionIndex < myQuestions.length) {
+    //    getQuestions(myQuestions[questionIndex]) 
+    // } else {
+    //     clearInterval(timeInterval);
 
+    // }
+}
 
 function answerClick() {
     if (this.value === myQuestions[questionIndex].correctAnswer) {
         console.log('Good Job');
+        questionIndex++;
+        totalScore++;
+        scoreContainer.textContent = "Score: " + totalScore;
+        getQuestions()
     } else {
-        console.log('Wrong: -10 secs')
+        timeLeft = timeLeft - 10;
+        console.log('Wrong: -10 secs');
+        questionIndex++;
+        getQuestions()
     }
-    questionIndex++;
-    startQuiz()
+    
+    // startQuiz()
 }
 
 function setTimer() {
@@ -89,9 +102,16 @@ function setTimer() {
     }, 1000);
 }
 
+function keepScore() {
 
+}
+
+function resetQuiz () {
+    location.reload();
+}
 
 // function showResults(){}
 
 
 startButton.onclick = startQuiz;
+resetButton.onclick = resetQuiz; 
