@@ -18,7 +18,7 @@ var timeLeft = 50;
 var correctAnswer = ['d', 'b', 'a', 'c', 'd'];
 var questionIndex = 0;
 var totalScore = 0;
-
+var timeInterval;
 var myQuestions = [
     {
         question: "What is 2 + 2?",
@@ -54,6 +54,12 @@ function startQuiz() {
 }
 
 function getQuestions() {
+
+    if (questionIndex === myQuestions.length) {
+       return endGame();
+    } 
+
+    startButton.disabled = true;
     var currentQuestion = myQuestions[questionIndex];
     quizQuestions.textContent = currentQuestion.question;
     choices.innerHTML = '';
@@ -64,19 +70,13 @@ function getQuestions() {
         currentAnswerEl.onclick = answerClick;
         choices.appendChild(currentAnswerEl);
     }
-    // if (questionIndex < myQuestions.length) {
-    //    getQuestions(myQuestions[questionIndex]) 
-    // } else {
-    //     clearInterval(timeInterval);
-
-    // }
 }
 
 function answerClick() {
     if (this.value === myQuestions[questionIndex].correctAnswer) {
         console.log('Good Job');
         questionIndex++;
-        totalScore++;
+        totalScore = totalScore + 5;
         scoreContainer.textContent = "Score: " + totalScore;
         getQuestions()
     } else {
@@ -90,7 +90,7 @@ function answerClick() {
 }
 
 function setTimer() {
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         if (timeLeft > 1) {
             timeLeft--;
             timerEl.textContent = timeLeft;
@@ -100,18 +100,30 @@ function setTimer() {
             clearInterval(timeInterval);
         }
     }, 1000);
+}   
+
+function endGame() {
+    clearInterval(timeInterval);
+    keepScore();
+
+    window.location.href = "highscores.html";
 }
 
 function keepScore() {
 
-}
+    // get the past scores
 
-function resetQuiz () {
-    location.reload();
+    // add the current score to past scores
+
+    // save to local
+
 }
 
 // function showResults(){}
 
+function resetQuiz () {
+    location.reload();
+}
 
 startButton.onclick = startQuiz;
 resetButton.onclick = resetQuiz; 
