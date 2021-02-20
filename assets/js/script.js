@@ -7,7 +7,6 @@
 // scores and intitals are stored until reset
 
 var quizQuestions = document.getElementById('questions');
-var resultsContainer = document.getElementById('results');
 var scoreContainer = document.getElementById('score');
 var startButton = document.getElementById('startButton');
 var resetButton = document.getElementById('reset-btn');
@@ -19,31 +18,32 @@ var correctAnswer = ['d', 'b', 'a', 'c', 'd'];
 var questionIndex = 0;
 var totalScore = 0;
 var timeInterval;
+
 var myQuestions = [
     {
-        question: "What is 2 + 2?",
-        answers: ["A: 1", "B: 2", "C: 3", "D: 4"],
-        correctAnswer: "D: 4"
+        question: "When you create an .html file which of these elements comes first?",
+        answers: ["A: body", "B: header", "C: title", "D: head"],
+        correctAnswer: "D: head"
     },
     {
-        question: "What is 2 * 2?",
-        answers: ["A: 1", "B: 2", "C: 30", "D: 4"],
-        correctAnswer: "D: 4"
+        question: "How do you add a background color for all <h1> elements?",
+        answers: ["A: all.h1 {background-color:#FFFFFF}", "B: h1.all {background-color:#FFFFFF}", "C: h1 {bgcolor = #FFFFFF}", "D: h1 {background-color:#FFFFFF}"],
+        correctAnswer: "D: h1 {background-color:#FFFFFF}"
     },
     {
-        question: "What is 2 - 2?",
-        answers: ["A: 1", "B: 2", "C: 0", "D: 4"],
-        correctAnswer: "C: 0"
+        question: "What is the value of a boolean variable?",
+        answers: ["A: number", "B: string", "C: true/false", "D: null"],
+        correctAnswer: "C: true/false"
     },
     {
-        question: "What is 2 + 22?",
-        answers: ["A: 1", "B: 24", "C: 8", "D: 4"],
-        correctAnswer: "B: 24"
+        question: "How do you declare a function?",
+        answers: ["A: []", "B: ()", "C: {}", "D: ||"],
+        correctAnswer: "B: ()"
     },
     {
-        question: "What is 20 - 2?",
-        answers: ["A: 1", "B: 2", "C: 18", "D: 4"],
-        correctAnswer: "C: 18"
+        question: "Inside which HTML element do we put the JavaScript file?",
+        answers: ["A: <java>", "B: <JS>", "C: <script>", "D: <javascript>"],
+        correctAnswer: "C: <script>"
     },
 ];
 
@@ -86,7 +86,6 @@ function answerClick() {
         getQuestions()
     }
     
-    // startQuiz()
 }
 
 function setTimer() {
@@ -105,21 +104,20 @@ function setTimer() {
 function endGame() {
     clearInterval(timeInterval);
     keepScore();
-
+    
     window.location.href = "highscores.html";
 }
 
 function keepScore() {
-
-    // get the past scores
-
-    // add the current score to past scores
-
-    // save to local
+    
+    var scores = JSON.parse(localStorage.getItem("Scores")) || [];
+    var currentScore = {initials: "initials", score: totalScore};
+    scores.push(currentScore);
+    localStorage.setItem("Scores", JSON.stringify(scores));
+   
 
 }
 
-// function showResults(){}
 
 function resetQuiz () {
     location.reload();

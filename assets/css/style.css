@@ -3,59 +3,126 @@
     background-color: black;
     color: yellow;
 }
+
+#quiz {
+    background-color: black;
+    color: yellow;
+}
+
 #header {
     display: flex;
     min-height:200px;
-    
 }
+
 .header-div {
     flex:1;
     font-size: 30px;
 }
+
 #score {
     display:flex;
-    
 }
+
 #timer {
     display: flex;
     justify-content: flex-end;
 }
+
 #timer-text {
     display:flex;
     justify-content: center;
     max-width:300px;
 }
+
 #container {
     display: column;
-    justify-content: center;
-    
+    justify-content: center; 
 }
+
 #questions {
     padding: 20px 20px;
     display:flex;
     justify-content: center;
     font-size: 30px;
-    
 }
+
+#end-game {
+    padding: 20px 20px;
+    display:flex;
+    justify-content: center;
+    font-size: 30px;  
+}
+
 #choices {
     display:grid;
     justify-content: center;
     margin: 10px 10px;
-    
 }
+
 .answer {
     margin:5px 5px;
 }
+
 #control-buttons {
     display:flex;
     justify-content: center;
-    justify-content: space-evenly;
-    
-    
+    justify-content: space-evenly; 
 }
+
 .btn-hide {
     font-size:20px;
     padding:10px;
-    border-radius: 15px;
+    border-radius: 15px;  
+}
+
+#results {
+    background-color: white;
+    color: blue;
+}
+
+#box {
+    display:column;
+    justify-content: center;
     
+}
+
+#initials {
+    display:grid;
+    justify-content: center;
+    margin-bottom:20px;
+    font-size: 15px;
+}
+
+#highscores {
+    display:flex;
+    justify-content: center;
+    height:300px;
+}
+
+#display-card {
+    border: 2px solid yellow;
+    width:300px;
+    color:yellow;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    color:yellow;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+#saveBtn {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#backButton {
+    margin-top:15px;
 }
