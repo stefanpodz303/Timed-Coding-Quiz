@@ -96,20 +96,12 @@ function setTimer() {
 
 function endGame() {
     clearInterval(timeInterval);
-    keepScore();
+    localStorage.setItem('tempScore', totalScore);
     
     window.location.href = "highscores.html";
 }
 
-function keepScore() {
-    
-    var scores = JSON.parse(localStorage.getItem("Scores")) || [];
-    var currentScore = {initials: "initials", score: totalScore};
-    scores.push(currentScore);
-    localStorage.setItem("Scores", JSON.stringify(scores));
-   
 
-}
 
 
 function resetQuiz () {
