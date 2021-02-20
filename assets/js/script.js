@@ -1,10 +1,3 @@
-// create a multiple choice timed quiz 
-// quiz and timer starts at click of start button
-// render one question at a time
-// move to next question when answer is chosen
-// penalize a player 10 secs for wrong answers
-// once quiz is complete or timer reaches 0 user is presented with a results page to input initials
-// scores and intitals are stored until reset
 
 var quizQuestions = document.getElementById('questions');
 var scoreContainer = document.getElementById('score');
@@ -13,7 +6,7 @@ var resetButton = document.getElementById('reset-btn');
 var choices = document.getElementById('choices');
 var timerEl = document.getElementById("timer");
 var timerText = document.getElementById("timer-text");
-var timeLeft = 50;
+var timeLeft = 40;
 var correctAnswer = ['d', 'b', 'a', 'c', 'd'];
 var questionIndex = 0;
 var totalScore = 0;
@@ -93,11 +86,11 @@ function setTimer() {
         if (timeLeft > 1) {
             timeLeft--;
             timerEl.textContent = timeLeft;
-        } else {
-            timerEl.textContent = "";
-            timerText.textContent = "GAME OVER";
-            clearInterval(timeInterval);
+        } else { 
+            endGame();
+           
         }
+        
     }, 1000);
 }   
 
